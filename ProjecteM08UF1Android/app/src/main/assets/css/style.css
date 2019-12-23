@@ -1,0 +1,36 @@
+* {
+    text-align: center;
+    }
+
+    body {
+     background-image: url("img.jpg");
+     background-size: cover;
+
+    }
+
+#lista{
+
+        position: absolute;
+        top: 30%;
+        bottom: 50%;
+        left: 0;
+        right: 0;
+        width: 100%;
+
+        margin: auto;
+    }
+li{
+    background-color: black;
+    color: bisque;
+    border-radius: 15px;
+}
+
+b{
+    Background-color: black;
+    color:green;
+    border-radius: 10px;
+}
+
+#titulo{
+    font-size: 30px;
+}

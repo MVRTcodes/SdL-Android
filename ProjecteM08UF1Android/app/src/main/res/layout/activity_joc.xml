@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JocActivity">
+
+    <TextView
+        android:id="@+id/nomView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif"
+        android:textAlignment="textStart"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/GridView1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <GridView
+        android:id="@+id/GridView1"
+        android:layout_width="405dp"
+        android:layout_height="439dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="1dp"
+        android:columnWidth="50dp"
+        android:gravity="center"
+        android:numColumns="9"
+        android:stretchMode="columnWidth"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/tvAciertos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nomView4" />
+
+    <ListView
+        android:id="@+id/listaContactos"
+        android:layout_width="413dp"
+        android:layout_height="238dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAciertos"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvAciertos"
+        android:layout_width="141dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="240dp"
+        android:text="Mots Adivinats : 0"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/GridView1" />
+
+    <TextView
+        android:id="@+id/tvPuntuacio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:textAlignment="viewEnd"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/GridView1"
+        app:layout_constraintEnd_toEndOf="@+id/GridView1" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
