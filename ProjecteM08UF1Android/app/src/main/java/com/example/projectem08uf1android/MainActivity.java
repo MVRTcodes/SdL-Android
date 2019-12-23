@@ -25,7 +25,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private final String BBDD ="SdL";
+    private final String BBDD ="SdLL";
     private final String TAULA = "puntuacion";
     private Button jugar;
     private ListView lista;
@@ -71,23 +71,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             baseDades.execSQL("CREATE TABLE IF NOT EXISTS "
                     + TAULA
                     + " (nom VARCHAR,"
+                    + " data VARCHAR,"
                     + " puntuacio INT);");
 
 
-            baseDades.execSQL("INSERT INTO "
-                    + TAULA
-                    + " (nom, puntuacio)"
-                    + " VALUES ('alejandro', 1);");
-
-
-            Cursor c = baseDades.rawQuery("SELECT nom, puntuacio"
+            Cursor c = baseDades.rawQuery("SELECT nom, data, puntuacio"
                             + " FROM " + TAULA
                             + " WHERE puntuacio > 10 LIMIT 5;",
                     null);
 
 
             int columnaNom = c.getColumnIndex("nom");
+            int columnaData = c.getColumnIndex("data");
             int columnaPuntuacio = c.getColumnIndex("puntuacio");
+
 
 
             if (c != null) {
@@ -99,13 +96,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         do {
                                 i++;
                                 String nom = c.getString(columnaNom);
+                                String data = c.getString(columnaData);
                                 int puntuacio = c.getInt(columnaPuntuacio);
 
                                 String nomColumnaPuntuacio = c.getColumnName(columnaPuntuacio);
 
 
-                                resultats.add("" + i + ": " + nom
-                                        + " (" + nomColumnaPuntuacio + ": " + puntuacio + ")");
+                                resultats.add("" + i + " - " + nom
+                                        + " - " + nomColumnaPuntuacio + ": " + puntuacio + " | "+data);
 
                         } while (c.moveToNext());
                     }
