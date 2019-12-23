@@ -73,9 +73,11 @@ public class JocActivity extends AppCompatActivity {
     //Arralist per omplir el GridView
 
     Random r = new Random();
-    char[] array = new char[]{ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    char[] array = new char[]{ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+     'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
     ArrayList<String> ar = new ArrayList<String>();
-    private final int rdm1= r.nextInt(4),rdm2= r.nextInt(4),rdm3 = r.nextInt(4),rdm4 = r.nextInt(4),rdm5 = r.nextInt(4),rdm6 = r.nextInt(4),rdm7 = r.nextInt(4),rdm8 = r.nextInt(4),rdm9 = r.nextInt(4), rdm10 = r.nextInt(3);
+    private final int rdm1= r.nextInt(4),rdm2= r.nextInt(4),rdm3 = r.nextInt(4),rdm4 = r.nextInt(4),rdm5 = r.nextInt(4)
+    private final int rdm6 = r.nextInt(4),rdm7 = r.nextInt(4),rdm8 = r.nextInt(4),rdm9 = r.nextInt(4), rdm10 = r.nextInt(3);
 
     //Contactes
 
