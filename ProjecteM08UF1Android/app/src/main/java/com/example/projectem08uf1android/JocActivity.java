@@ -46,7 +46,7 @@ public class JocActivity extends AppCompatActivity {
     private TextView nomET;
     private TextView tvPuntuacio;
     private TextView tvAciertos;
-    private final String BBDD ="SdL";
+    private final String BBDD ="SdLL";
     private final String TAULA = "puntuacion";
 
     //Color del fons del view dins de GridView
@@ -348,7 +348,7 @@ public class JocActivity extends AppCompatActivity {
 
                         AlertDialog alert11 = builder1.create();
 
-                        ResultadosdentroBBDD(puntuacion,nomETStr);
+                        ResultadosdentroBBDD(puntuacion,String.valueOf(java.time.LocalDate.now()), nomETStr);
                         alert11.show();
                     }
 
@@ -367,7 +367,7 @@ public class JocActivity extends AppCompatActivity {
 
 
     }
-    protected void ResultadosdentroBBDD(int puntuacion,String nombre){
+    protected void ResultadosdentroBBDD(int puntuacion,String data, String nombre){
 
         SQLiteDatabase baseDades = null;
         try {
@@ -375,8 +375,8 @@ public class JocActivity extends AppCompatActivity {
 
             baseDades.execSQL("INSERT INTO "
                     + TAULA
-                    + " (nom, puntuacio)"
-                    + " VALUES (\'"+nombre+"\', "+puntuacion+");");
+                    + " (nom, data, puntuacio)"
+                    + " VALUES (\'"+nombre+"\', \'"+data+"\', "+puntuacion+");");
 
         } finally {
             if (baseDades != null) {
