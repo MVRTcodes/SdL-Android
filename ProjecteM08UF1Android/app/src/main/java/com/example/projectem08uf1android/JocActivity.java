@@ -161,7 +161,6 @@ public class JocActivity extends AppCompatActivity {
         tvPuntuacio.setText(String.valueOf(puntuacion));
 
         //Bucle per afegir les paraules dins de l'Arraylist amb el contingut del GridView(Sopa de lletres)
-        Log.i("addW", "Randoms: "+rdm1+rdm2+rdm3+rdm4+rdm5);
         for (int i=0;i<81;i++){
             boolean next = false;
             //Vertical
@@ -197,8 +196,6 @@ public class JocActivity extends AppCompatActivity {
             if(i==rdm1){
 
                 String rf = RespostesFinals.get(5);
-                Log.i("addW", String.valueOf(i));
-                Log.i("addW", rf);
                 for(int j = 0; j < rf.length(); j++){
                     ar.add(String.valueOf(rf.charAt(j)).toUpperCase());
                 }
@@ -207,8 +204,6 @@ public class JocActivity extends AppCompatActivity {
             }
             if(i==rdm2+9){
                 String rf = RespostesFinals.get(1);
-                Log.i("addW", String.valueOf(i));
-                Log.i("addW", rf);
                 for(int j = 0; j < rf.length(); j++){
                     ar.add(String.valueOf(rf.charAt(j)).toUpperCase());
                 }
@@ -218,8 +213,6 @@ public class JocActivity extends AppCompatActivity {
 
             if(i==rdm3+(9*2)){
                 String rf = RespostesFinals.get(2);
-                Log.i("addW", String.valueOf(i));
-                Log.i("addW", rf);
                 for(int j = 0; j < rf.length(); j++){
                     ar.add(String.valueOf(rf.charAt(j)).toUpperCase());
                 }
@@ -228,8 +221,6 @@ public class JocActivity extends AppCompatActivity {
             }
             if(i==rdm4+(9*3)){
                 String rf = RespostesFinals.get(3);
-                Log.i("addW", String.valueOf(i));
-                Log.i("addW", rf);
                 for(int j = 0; j < rf.length(); j++){
                     ar.add(String.valueOf(rf.charAt(j)).toUpperCase());
                 }
@@ -238,8 +229,6 @@ public class JocActivity extends AppCompatActivity {
             }
             if(i==rdm5+(9*4)){
                 String rf = RespostesFinals.get(4);
-                Log.i("addW", String.valueOf(i));
-                Log.i("addW", rf);
                 for(int j = 0; j < rf.length(); j++){
                     ar.add(String.valueOf(rf.charAt(j)).toUpperCase());
                 }
@@ -301,7 +290,6 @@ public class JocActivity extends AppCompatActivity {
                             v.setBackgroundColor(Color.WHITE);
                             tv.setTextColor(Color.BLACK);
                             Resposta = Resposta.substring(0, Resposta.length() - 1);
-                            Log.i("Palabra", Resposta);
                             if (posres.contains(String.valueOf(position))) posres.remove(String.valueOf(position));
 
                         } else {
@@ -311,17 +299,17 @@ public class JocActivity extends AppCompatActivity {
                             String newWord = String.valueOf(((TextView) v).getText());
                             Resposta += newWord;
                             posres.add(String.valueOf(position));
-                            Log.i("Palabra", Resposta);
                         }
                     } catch (Exception e) {
+                        //La primera vegada que entra detecta el v.getBackground com a null per aixó aquest try and catch
                         v.setBackgroundColor(Color.rgb(255,129,98));
                         tv.setTextColor(Color.WHITE);
                         String newWord = String.valueOf(((TextView) v).getText());
                         Resposta += newWord;
                         posres.add(String.valueOf(position));
-                        Log.i("Palabra", Resposta);
                     }
 
+                    //Compara el String resposta(resultat marcat dins de la sopa de lletres) amb l'ArrayList que conté les respostes
                     if (RespostesFinals.contains(Resposta)) {
                         defres = (ArrayList<String>) posres.clone();
                         puntuacion += Resposta.length()*10;
@@ -331,6 +319,7 @@ public class JocActivity extends AppCompatActivity {
                         tvAciertos.setText("Mots Esdevinats: "+aciertos);
 
                     }
+                    //Si adivines les 7 paraules (variable aciertos arriba a 7), entra i finalitza la partida
                     if(aciertos==NUMCONTACTES){
 
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(JocActivity.this);
@@ -347,24 +336,15 @@ public class JocActivity extends AppCompatActivity {
                                 });
 
                         AlertDialog alert11 = builder1.create();
-
+                        // Introduce el resultado dentro de la BBDD
                         ResultadosdentroBBDD(puntuacion,String.valueOf(java.time.LocalDate.now()), nomETStr);
                         alert11.show();
                     }
 
-
-                    /*Toast.makeText(getApplicationContext(),
-                            Resposta, Toast.LENGTH_SHORT).show();*/
                 }
-
-
 
             }
             });
-
-
-
-
 
     }
     protected void ResultadosdentroBBDD(int puntuacion,String data, String nombre){
