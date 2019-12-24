@@ -328,7 +328,7 @@ public class JocActivity extends AppCompatActivity {
                         aciertos ++;
                         Resposta = "";
                         tvPuntuacio.setText(String.valueOf(puntuacion));
-                        tvAciertos.setText("Mots Adivinats: "+aciertos);
+                        tvAciertos.setText("Mots Esdevinats: "+aciertos);
 
                     }
                     if(aciertos==NUMCONTACTES){
