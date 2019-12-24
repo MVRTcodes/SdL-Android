@@ -25,13 +25,17 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    //BBDD
     private final String BBDD ="SdLL";
     private final String TAULA = "puntuacion";
+
+    //XMLLayout
     private Button jugar;
     private ListView lista;
     private EditText nomET;
     private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 100;
     protected WebView webView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-
+        //Creació de la BBDD/taula, query per accedir a les dades i mostrarles despres
         SQLiteDatabase baseDades = null;
         try {
 
@@ -86,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             int columnaPuntuacio = c.getColumnIndex("puntuacio");
 
 
-
+            
             if (c != null) {
                 if(c.getCount() > 0) {
                     if (c.isBeforeFirst()) {
@@ -126,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    // Action bar per accedir a les intruccions (WebView)
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.overflow, menu);
         return true;
@@ -146,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
+    //Intent per a passar a la pestaña del joc
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(this, JocActivity.class);
